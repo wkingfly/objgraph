@@ -194,8 +194,10 @@ def show_most_common_types(limit=10, objects=None, shortnames=True):
     """
     stats = most_common_types(limit, objects, shortnames=shortnames)
     width = max(len(name) for name, count in stats)
+    result = []
     for name, count in stats:
-        print('%-*s %i' % (width, name, count))
+        result.append(''.join([('%-*s %i' % (width, name, count)), '\n']))
+    return result
 
 
 def show_growth(limit=10, peak_stats={}, shortnames=True):
